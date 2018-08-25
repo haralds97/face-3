@@ -9,7 +9,7 @@ import Tachyons from 'tachyons';
 import Clarifai from 'clarifai';
 import Particles from 'react-particles-js';
 
-
+// small change
 const app = new Clarifai.App({
  apiKey: '66c26976e675482eaa843e8fc6b634ca'
 });
