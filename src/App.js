@@ -9,7 +9,7 @@ import Tachyons from 'tachyons';
 import Clarifai from 'clarifai';
 import Particles from 'react-particles-js';
 
-
+// small change
 const app = new Clarifai.App({
  apiKey: '66c26976e675482eaa843e8fc6b634ca'
 });
@@ -34,7 +34,7 @@ class App extends Component {
     app.models.predict(
       Clarifai.FACE_DETECT_MODEL, 
       this.state.input)
-      .then(response => this.calculateFacePosition(response))
+      .then(response => this.displayFaceBox(this.calculateFacePosition(response)))
       .catch(err => console.log(err))
   };
     
@@ -42,15 +42,20 @@ class App extends Component {
   calculateFacePosition = (data) => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
-    const height = image.height;
-    const width = image.width;
+    const height = Number(image.height);
+    const width = Number(image.width);
+    console.log(height, width);
     return {
-      const 
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - (clarifaiFace.right_col * width),
+      bottomRow: height - (clarifaiFace.bottom_row * height)
     }
   }
 
-  displayFaceBox = () => {
-
+  displayFaceBox = (box) => {
+    console.log(box);
+    this.setState({ box: box });
   }
 
 
@@ -68,6 +73,7 @@ class App extends Component {
         />
         <FaceRecognition 
           imageUrl={this.state.imageUrl}
+          box={this.state.box}
         />
       </div>
     );
