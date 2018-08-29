@@ -1,11 +1,13 @@
 import React from 'react';
 import './Navigation.css';
 
-const Navigation = () => {
+const Navigation = ({ onRouteChange }) => {
 	return(
-		<div className=" nav mr3 pa2 underline dim f3 justify-right pa2 pointer">
-			<p>Signout</p>
-		</div>
+		<nav style={{ }}>
+			<p 
+			className=" nav mr3 pa2 underline dim f3 justify-right pa2 pointer"
+			onClick={() => onRouteChange("SignIn")}>Signout</p>
+		</nav>
 	);
 }
 
