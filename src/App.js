@@ -10,8 +10,8 @@ import Clarifai from 'clarifai';
 import Particles from 'react-particles-js';
 
 const app = new Clarifai.App({
- apiKey: '66c26976e675482eaa843e8fc6b634ca'
-});
+  apiKey: '66c26976e675482eaa843e8fc6b634ca'
+})
 
 class App extends Component {
   constructor() {
@@ -24,14 +24,14 @@ class App extends Component {
   }
 
   onInputChange = (event) => {
-  	this.setState({ input: event.target.value });
+    this.setState({ input: event.target.value });
   }
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
     app.models.predict(
-    	Clarifai.FACE_DETECT_MODEL, 
-    	this.state.input
+      Clarifai.FACE_DETECT_MODEL, 
+      this.state.input
     )
     .then(response => this.displayFaceBox(this.calculateFacePosition(response)))
     .catch(err => console.log(err));
@@ -41,10 +41,10 @@ class App extends Component {
   calculateFacePosition = (data) => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
-    const height = Number(image.height);
     const width = Number(image.width);
+    const height = Number(image.height);
     return {
-      leftCol: clarifaiFace.left_col * width,
+      leftCol: clarifaiFace.left_col * width,  
       topRow: clarifaiFace.top_row * height,
       rightCol: width - (clarifaiFace.right_col * width),
       bottomRow: height - (clarifaiFace.bottom_row * height)
@@ -52,7 +52,7 @@ class App extends Component {
   }
 
   displayFaceBox = (box) => {
-    this.setState({ box: box });
+    this.setState({ box: box })
   }
 
 
