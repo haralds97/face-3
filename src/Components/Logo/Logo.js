@@ -5,7 +5,7 @@ import light2 from './light2.png';
 
 const Logo = () => {
 	return(
-		<div className="">
+		<div className="ml4">
 			<Tilt className="Tilt gradient br3 ml3 " options={{ max : 45 }} style={{ height: 150, width: 150 }} >
 				<div className="Tilt-inner"> 
 					<img alt="" src={light2}/>
