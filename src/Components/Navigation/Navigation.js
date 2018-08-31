@@ -5,17 +5,17 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
 	if (isSignedIn) {
 		return(
 			<nav className="mr3" style={{display: 'flex', justifyContent: 'flex-end' }}>
-			<p className="nav mr3 pa2 underline dim f3 justify-right pa2 pointer" onClick={() =>onRouteChange('Signout')}>Signout</p>	
+			<p onClick={() =>onRouteChange('Signout')} className="nav mr3 pa2 underline dim f3 justify-right pa2 pointer" >Signout</p>	
 		</nav>
-		)
-	} 
-
-	return(
+		);
+	} else {
+		return(
 		<nav className="mr3" style={{display: 'flex', justifyContent: 'flex-end' }}>
-			<p className="nav mr3 pa2 underline dim f3 justify-right pa2 pointer" onClick={() =>onRouteChange('home')}>Sign In</p>
-			<p className="nav mr3 pa2 underline dim f3 justify-right pa2 pointer" onClick={() =>onRouteChange('home')}>Register</p>			
+			<p onClick={() =>onRouteChange('SignIn')} className="nav mr3 pa2 underline dim f3 justify-right pa2 pointer">Sign In</p>
+			<p onClick={() =>onRouteChange('Register')} className="nav mr3 pa2 underline dim f3 justify-right pa2 pointer" >Register</p>			
 		</nav>
 	);	
+	}
 }
 
 export default Navigation;
